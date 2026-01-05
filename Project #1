@@ -1,0 +1,66 @@
+import random
+
+anime_library = {
+    "action": [
+        "Naruto",
+        "Attack on Titan",
+        "One Piece",
+        "Bleach"
+    ],
+    "sports": [
+        "Haikyuu!!",
+        "Blue Lock",
+        "Kuroko no Basket"
+    ],
+    "fantasy": [
+        "Frieren: Beyond Journey's End",
+        "Hunter x Hunter",
+        "Seven Deadly Sins",
+        "Blue Exorcist",
+        "Charlotte"
+    ],
+    "romance": [
+        "Horimiya",
+        "Toradora",
+        "Clannad"
+    ]
+}
+
+def anime_recommender(genre):
+    genre = genre.lower()
+    if genre in anime_library:
+        return random.choice(anime_library[genre])
+    return "Genre not available"
+
+def save_history(genre, anime):
+    with open("history.txt", "a") as file:
+        file.write(f"{genre}: {anime}\n")
+
+def show_history():
+    try:
+        with open("history.txt", "r") as file:
+            print("\n--- Recommendation History ---")
+            print(file.read())
+    except FileNotFoundError:
+        print("\nNo history found.")
+
+while True:
+    choice = input(
+        "\nEnter a genre (action, sports, fantasy, romance)\n"
+        "Type 'history' to view past recommendations\n"
+        "Type 'quit' to exit: "
+    ).lower()
+
+    if choice == "quit":
+        print("Goodbye!")
+        break
+
+    if choice == "history":
+        show_history()
+        continue
+
+    recommendation = anime_recommender(choice)
+    print("Recommended anime:", recommendation)
+
+    if recommendation != "Genre not available":
+        save_history(choice, recommendation)
