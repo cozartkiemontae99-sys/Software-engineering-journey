@@ -41,4 +41,7 @@ Through self-directed learning and hands-on projects, I have built a foundation 
 ## How to Explore My Projects
 1. Clone this repository:
 ```bash
-git clone https://github.com/YourUsername/my-coding-portfolio.git
+----
+## contact information
+1.email Cozartkiemontae48@gmail.com
+2.Number: 9194758911
